@@ -1,0 +1,10 @@
+{
+  "name": "redlist",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.1.1",
+    "jquery": "^3.6.0"
+  }
+}
