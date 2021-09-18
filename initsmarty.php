@@ -1,0 +1,9 @@
+<?php
+    $smarty = new Smarty();
+    $smarty->setTemplateDir(PATH_MODS);
+    $smarty->setCompileDir('compiled/');
+    $smarty->setConfigDir(PATH_MODS);
+    $smarty->setCacheDir('cache/');
+    
+    $smarty->left_delimiter = '{{';
+    $smarty->right_delimiter = '}}';

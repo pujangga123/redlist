@@ -1,3 +1,8 @@
 node_modules/
 src/
 vendor/
+workspace.code-workspace
+cache/*
+!cache/README.md
+compiled/*
+!compiled/README.md
