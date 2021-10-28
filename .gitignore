@@ -6,3 +6,4 @@ cache/*
 !cache/README.md
 compiled/*
 !compiled/README.md
+test*
