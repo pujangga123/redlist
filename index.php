@@ -7,25 +7,23 @@
     require_once "initsmarty.php";
     require_once "ext_libs.php";
 
-    if($_cid=='') {
+    if($_kid=='') {
         // check cookie
-        if(isset($_COOKIE['cid'])) { // if exists, load to session
-            $_SESSION['cid'] =$_COOKIE['cid'];
-            $_cid = $_SESSION['cid'];
+        if(isset($_COOKIE['kid'])) { // if exists, load to session
+            $_SESSION['kid'] =$_COOKIE['kid'];
+            $_kid = $_SESSION['kid'];
 
-            $row = sqlRow("*","karyawan","uid",$_cid);
+            $row = sqlRow("*","karyawan","id",$_kid);
             if($row) { 
-                $_SESSION['nama'] = $row['nama'];
-                $_SESSION['role'] = $row['role']; // user role
-                $_SESSION['dept'] = $row['dept'];            
+                //
             } else {
-                $_cid = "";
+                $_kid = "";
             }
 
             //if expired or not valid, goto login
-            
+            header('location:login.html');
         } else { // if cookie empty, goto to login
-
+            header('location:login.html');
         }
         
     }
@@ -53,5 +51,5 @@
     $smarty->assign("_header", $_header);
     $smarty->assign("_module", $_module);
     $smarty->assign("_module_template", $_module_template);
-    $smarty->assign("_cid", $_cid);
+    $smarty->assign("_kid", $_kid);
     $smarty->display(PATH_MODS."index.html");

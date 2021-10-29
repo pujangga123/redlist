@@ -1,10 +1,8 @@
 <?php
     session_start();
 
-    if(isset($_SESSION['cid'])) {
-        $_cid = $_SESSION['cid'];    
-        $_uid = $_SESSION['uid']?:'';
+    if(isset($_SESSION['kid'])) {
+        $_kid = $_SESSION['kid'];    
     } else { 
-        $_cid = '';
-        $_uid = "";
+        $_kid = '';
     }

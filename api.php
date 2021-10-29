@@ -12,6 +12,12 @@
     require_once "initdb.php";  
     require_once "ext_libs.php";
 
+    if(!isset($_POST['token'])) {
+        die(1); //fail
+    } else {
+        $token = $_POST['token'];
+    }
+
     if($token=='login') {
         $username = $_POST['username']??'';
         $userpass = $_POST['userpass']??'';
@@ -24,6 +30,8 @@
 
         $sql = "select * from karyawan where username='$username' and userpass=md5('$userpass')";
         if($row = $db->GetRow($sql)) {
+            $_SESSION['kid'] = $row['id'];
+            setcookie("kid",$row['id'],time()+60*60*2);
             die('ok'); //user accepted
         } else {
             die('invalid'); //user not found or password not match
