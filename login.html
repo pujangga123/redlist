@@ -87,35 +87,37 @@
            <h1>redlist</h1>
            <p>Aplikasi Absensi</p>
         </div>
-     </div>
-     <div class="main">
+    </div>
+    <div class="main">
         <div class="col-md-4 col-sm-12 ">
-           <div class="login-form">
-              <form style="padding-right:10px">
-                 <div class="form-group mt-3">
+            <div class="login-form">
+                <form style="padding-right:10px">
+                    <div class="form-group mt-3">
                     <label>User Name</label>
                     <input type="text" class="form-control" id="username" placeholder="User Name">
-                 </div>
-                 <div class="form-group mt-3 mb-3">
+                    </div>
+                    <div class="form-group mt-3 mb-3">
                     <label>Password</label>
                     <input type="password" class="form-control" id="userpass" placeholder="Password">
-                 </div>
-                 <button type="button" class="btn btn-primary" style="width:100%" onclick="loginSend()">Login</button>
-              </form>
-           </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" style="width:100%" onclick="loginSend()">Login</button>
+                </form>
+            </div>
         </div>
-     </div>
-    
-     <script>
-         function loginSend() {
-             let username = $("#username").val();
-             let userpass = $("#userpass").val();
-    
-             $.post('api.php',{token:'login', username:username, userpass:userpass}, function(result){
+    </div>
+
+    <script>
+    function loginSend() {
+        let username = $("#username").val();
+        let userpass = $("#userpass").val();
+
+            $.post('api.php',{token:'login', username:username, userpass:userpass}, function(result){
                 alert(result);
-             });
-         }
-     </script>
+                window.location = "index.php";
+            });
+            return false;
+        }
+    </script>
 </body>
 </html>
 

@@ -6,7 +6,7 @@
     require_once "initdb.php";  
     require_once "initsmarty.php";
     require_once "ext_libs.php";
-
+    
     if($_kid=='') {
         // check cookie
         if(isset($_COOKIE['kid'])) { // if exists, load to session
