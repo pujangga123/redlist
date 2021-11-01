@@ -20,7 +20,7 @@
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #111;
+            background-color: firebrick;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -28,13 +28,17 @@
         .sidebar a {
             padding: 4px 8px 4px 32px;
             text-decoration: none;
-            font-size: 25px;
-            color: #818181;
+            font-size: 20px;
+            color: white;
             display: block;
             transition: 0.3s;
         }
+        #sidebar-full {
+            transition: 0.5s;
+            margin-left: -250px;
+        }
         .sidebar a:hover {
-            color: #f1f1f1;
+            color: white;
         }
         .sidebar .closebtn {
             position: absolute;
@@ -45,16 +49,16 @@
         }
 
         .openbtn {
-        font-size: 20px;
-        cursor: pointer;
-        background-color: #111;
-        color: white;
-        padding: 10px 15px;
-        border: none;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
         }
 
         .openbtn:hover {
-        background-color: #444;
+            background-color: #444;
         }
 
         #main {
@@ -73,9 +77,17 @@
 <body>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">☰</a>
-        <a href="#">Dashboard</a>
-        <a href="#">Management</a>
-        <a href="#">Setup</a>
+        <!-- https://stackoverflow.com/questions/39655110/what-happened-to-the-pull-left-and-pull-right-classes-in-bootstrap-4 -->
+        <div style="margin-top:100px" id="sidebar-full">
+            <div class="d-flex justify-content-between w-100">
+                <p style="margin-bottom:0"><a href="#" style="display:block">Dashboard</a></p>
+                <p style="margin-bottom:0"><a href="#" style="display:block; margin-right:10px" title="Dashboard"><i class="fas fa-swatchbook"></i></a></p>
+            </div>
+            <a href="#">Management</a>
+            <a href="#">Setup</a>
+
+            
+        </div>
     </div>    
 
     <div id="main">
@@ -87,9 +99,11 @@
         function toggleNav() {
             if(document.getElementById("main").style.marginLeft== "40px"||document.getElementById("main").style.marginLeft== "") {
                 document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("sidebar-full").style.marginLeft = "0px";
                 document.getElementById("main").style.marginLeft = "240px";
             } else {
                 document.getElementById("mySidebar").style.width = "50px";
+                document.getElementById("sidebar-full").style.marginLeft = "-250px";
                 document.getElementById("main").style.marginLeft= "40px";
             }
         }
