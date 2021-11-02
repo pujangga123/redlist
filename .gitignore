@@ -7,3 +7,4 @@ cache/*
 compiled/*
 !compiled/README.md
 test*
+/.vscode

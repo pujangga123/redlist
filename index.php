@@ -33,6 +33,8 @@
         $$key = $val;
     }
 
+    $_jsvars = array();
+
     // DEFAULTS
     // semua global val gunakan _ sebagai prefix
     $_template = "index .html"; // default template
@@ -48,6 +50,7 @@
 
     // assign vars
     $smarty->assign("_title", $_title);
+    $smarty->assign("_jsvars", $_jsvars);
     $smarty->assign("_header", $_header);
     $smarty->assign("_module", $_module);
     $smarty->assign("_module_template", $_module_template);

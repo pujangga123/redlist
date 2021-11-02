@@ -75,6 +75,14 @@
     </style>
 </head>
 <body>
+    {{if count($_jsvars)>0}}
+    <script> // JS VARS
+        {{foreach from=$_jsvars item=val key=key}}
+        var {{$key}} = "{{$val}}";
+        {{/foreach}}
+    </script>
+    {{/if}}
+        
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">☰</a>
         <!-- https://stackoverflow.com/questions/39655110/what-happened-to-the-pull-left-and-pull-right-classes-in-bootstrap-4 -->
@@ -84,15 +92,12 @@
                 <p style="margin-bottom:0"><a href="#" style="display:block; margin-right:10px" title="Dashboard"><i class="fas fa-swatchbook"></i></a></p>
             </div>
             <a href="#">Management</a>
-            <a href="#">Setup</a>
-
-            
+            <a href="#">Setup</a>            
         </div>
     </div>    
 
     <div id="main">
-        {{include file=$_module_template}}
-        
+        {{include file=$_module_template}}        
     </div>
 
     <script>
