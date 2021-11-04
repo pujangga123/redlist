@@ -10,6 +10,16 @@
         return $res;
     }
 
+    function setJsVar($name, $val) {
+        global $_jsvars;
+        
+        if(gettype($val)=='string') {
+            $_jsvars[$name] = "'$val'";
+        } else {
+            $_jsvars[$name] = $val;
+        }
+    }
+    
     function sqlRow($list, $table, $key, $id) {
         global $db;
         $sql = "select $list from $table where $key='$id' limit 1";

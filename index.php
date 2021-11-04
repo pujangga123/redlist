@@ -6,6 +6,8 @@
     require_once "initdb.php";  
     require_once "initsmarty.php";
     require_once "ext_libs.php";
+
+    // $_kid : karyawan ID, inisialisasi @ initsession
     
     if($_kid=='') {
         // check cookie
@@ -21,9 +23,9 @@
             }
 
             //if expired or not valid, goto login
-            header('location:login.html');
+            header('location:login.tpl');
         } else { // if cookie empty, goto to login
-            header('location:login.html');
+            header('location:login.tpl');
         }
         
     }
@@ -37,13 +39,13 @@
 
     // DEFAULTS
     // semua global val gunakan _ sebagai prefix
-    $_template = "index .html"; // default template
-    $_header = PATH_MODS."header.html";
+    $_template = "index .tpl"; // default template
+    $_header = PATH_MODS."header.tpl";
     $_title = "REDLIST"; 
 
     //read module
     $_module = isset($_GET['m'])?$_GET['m']:"dashboard";
-    $_module_template = PATH_MODS.$_module.".html";
+    $_module_template = PATH_MODS.$_module.".tpl";
 
     // execute module
     include PATH_MODS.$_module.".php";
@@ -55,4 +57,4 @@
     $smarty->assign("_module", $_module);
     $smarty->assign("_module_template", $_module_template);
     $smarty->assign("_kid", $_kid);
-    $smarty->display(PATH_MODS."index.html");
+    $smarty->display(PATH_MODS."index.tpl");

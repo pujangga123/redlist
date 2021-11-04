@@ -87,11 +87,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">☰</a>
         <!-- https://stackoverflow.com/questions/39655110/what-happened-to-the-pull-left-and-pull-right-classes-in-bootstrap-4 -->
         <div style="margin-top:100px" id="sidebar-full">
-            <div class="d-flex justify-content-between w-100">
-                <p style="margin-bottom:0"><a href="#" style="display:block">Dashboard</a></p>
-                <p style="margin-bottom:0"><a href="#" style="display:block; margin-right:10px" title="Dashboard"><i class="fas fa-swatchbook"></i></a></p>
-            </div>
-            <a href="#">Management</a>
+            
             <a href="#">Setup</a>            
         </div>
     </div>    
@@ -112,11 +108,36 @@
                 document.getElementById("main").style.marginLeft= "40px";
             }
         }
+
+        function buildMenu() {
+            var menus = [
+                {"title":"Dashboard", "link": "?m=dashboard", "icon": "fa-swatchbook"},
+                {"title":"Management", "link":"?m=management", "icon":"fa-archive" }
+            ];
+
+            let menuHtml = "";
+            for (row of menus) {
+                let rowTitle = row['title'];
+                let rowLink = row['link'];
+                let rowIcon = row['icon'];
+                menuHtml +=  `
+                <div class='d-flex justify-content-between w-100'>
+                    <p style='margin-bottom:0'><a href='${rowLink}' style='display:block' onclick='toggleNav()'>${rowTitle}</a></p>
+                    <p style='margin-bottom:0'><a href='${rowLink}' style='display:block; margin-right:10px' title='Dashboard'><i class='fas ${rowIcon}'></i></a>
+                    </p>
+                </div>`;
+            }
+            $("#sidebar-full").html(menuHtml);
+        }
         
         function closeNav() {
             document.getElementById("mySidebar").style.width = "50px";
             document.getElementById("main").style.marginLeft= "50px";
         }
+
+        $(document).ready(function() {
+            buildMenu();
+        })
     </script>
 </body>
 </html>
