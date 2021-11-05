@@ -23,9 +23,9 @@
             }
 
             //if expired or not valid, goto login
-            header('location:login.tpl');
+            header('location:login.html');
         } else { // if cookie empty, goto to login
-            header('location:login.tpl');
+            header('location:login.html');
         }
         
     }

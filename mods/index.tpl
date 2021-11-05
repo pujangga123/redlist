@@ -73,6 +73,7 @@
             .sidebar a {font-size: 18px;}
         }
     </style>
+    <script src="mods/index.js"></script>
 </head>
 <body>
     {{if count($_jsvars)>0}}
@@ -83,7 +84,7 @@
     </script>
     {{/if}}
         
-    <div id="mySidebar" class="sidebar">
+    <div id="mySidebar" class="sidebar" style="display:none">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">☰</a>
         <!-- https://stackoverflow.com/questions/39655110/what-happened-to-the-pull-left-and-pull-right-classes-in-bootstrap-4 -->
         <div style="margin-top:100px" id="sidebar-full">
@@ -102,10 +103,12 @@
                 document.getElementById("mySidebar").style.width = "250px";
                 document.getElementById("sidebar-full").style.marginLeft = "0px";
                 document.getElementById("main").style.marginLeft = "240px";
+                setCookie('openmenu',1,1);
             } else {
                 document.getElementById("mySidebar").style.width = "50px";
                 document.getElementById("sidebar-full").style.marginLeft = "-250px";
                 document.getElementById("main").style.marginLeft= "40px";
+                setCookie('openmenu',0,1);
             }
         }
 
@@ -133,10 +136,20 @@
         function closeNav() {
             document.getElementById("mySidebar").style.width = "50px";
             document.getElementById("main").style.marginLeft= "50px";
-        }
+        }        
 
         $(document).ready(function() {
             buildMenu();
+            let om = getCookie('openmenu');
+            if(om==null) {
+                setCookie('openmenu',0,1);
+                om = 0;
+            } 
+
+            if(om==1) {
+                toggleNav();
+            }
+            $("#mySidebar").show();
         })
     </script>
 </body>

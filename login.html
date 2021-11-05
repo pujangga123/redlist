@@ -112,7 +112,6 @@
         let userpass = $("#userpass").val();
 
             $.post('api.php',{token:'login', username:username, userpass:userpass}, function(result){
-                alert(result);
                 window.location = "index.php";
             });
             return false;
