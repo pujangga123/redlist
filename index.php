@@ -45,7 +45,7 @@
 
     //read module
     $_module = isset($_GET['m'])?$_GET['m']:"dashboard";
-    $_module_template = PATH_MODS.$_module.".tpl";
+    $_module_path = PATH_MODS;
 
     // execute module
     include PATH_MODS.$_module.".php";
@@ -55,6 +55,6 @@
     $smarty->assign("_jsvars", $_jsvars);
     $smarty->assign("_header", $_header);
     $smarty->assign("_module", $_module);
-    $smarty->assign("_module_template", $_module_template);
+    $smarty->assign("_module_path", $_module_path);
     $smarty->assign("_kid", $_kid);
     $smarty->display(PATH_MODS."index.tpl");

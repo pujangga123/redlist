@@ -35,7 +35,7 @@
         }
         #sidebar-full {
             transition: 0.5s;
-            margin-left: -250px;
+            margin-left: -250px;  /* menu toggle: 0/-250 */
         }
         .sidebar a:hover {
             color: white;
@@ -46,6 +46,10 @@
             right: 5px;
             font-size: 36px;
             margin-left: 50px;
+        }
+
+        .mySidebar {
+            width: 50px; /* menu toggle: 50/250 */
         }
 
         .openbtn {
@@ -64,7 +68,7 @@
         #main {
             transition: margin-left .5s;
             padding: 16px;
-            margin-left: 40px;
+            margin-left: 40px; /* menu toggle: 40/240 */
         }
 
         /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -74,6 +78,10 @@
         }
     </style>
     <script src="mods/index.js"></script>
+    {{if file_exists("`$_module_path``$_module`.header.tpl")}}
+        <!-- module script -->
+        {{include file="`$_module_path``$_module`.header.tpl"}}
+    {{/if}}
 </head>
 <body>
     {{if count($_jsvars)>0}}
@@ -94,7 +102,7 @@
     </div>    
 
     <div id="main">
-        {{include file=$_module_template}}        
+        {{include file="`$_module_path``$_module`.tpl"}}        
     </div>
 
     <script>
