@@ -14,7 +14,7 @@ class Karyawan extends Model {
         if($id=="") { // buat container karyawan kosong (untuk karyawan baru)
             //
         } else {
-            $sql = "select * from karyawan where id='$this->id'";
+            $sql = "select * from karyawan where id='$id'";
             $rs = $db->GetRow($sql);
             if($rs) {
                 $this->id = $rs['id'];
@@ -45,7 +45,8 @@ class Karyawan extends Model {
 
         $sql = "INSERT INTO karyawan ".generateInsertValues($row).
                 "ON DUPLICATE KEY UPDATE ".
-                generateUpdateSet($row);
+                generateUpdateSet(array_diff($row, ['id']));
+        return $db->Execute($sql);
     }
 }
 ?>

@@ -87,7 +87,7 @@
     {{if count($_jsvars)>0}}
     <script> // JS VARS
         {{foreach from=$_jsvars item=val key=key}}
-        var {{$key}} = "{{$val}}";
+        var {{$key}} = {{$val}};
         {{/foreach}}
     </script>
     {{/if}}
