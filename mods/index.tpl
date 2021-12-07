@@ -15,7 +15,6 @@
         }
         .sidebar {
             height: 100%;
-            width: 50px;
             position: fixed;
             z-index: 1;
             top: 0;
@@ -33,10 +32,6 @@
             display: block;
             transition: 0.3s;
         }
-        #sidebar-full {
-            transition: 0.5s;
-            margin-left: -250px;  /* menu toggle: 0/-250 */
-        }
         .sidebar a:hover {
             color: white;
         }
@@ -48,10 +43,41 @@
             margin-left: 50px;
         }
 
+{{if $_openmenu=="1"}}
+        /* om = 1 */
+        .mySidebar {
+            width: 250px; /* menu toggle: 50/250 */
+        }
+        #sidebar-full {
+            transition: 0.5s;
+            margin-left: 0px;  /* menu toggle: 0/-250 */
+        }
+        #main {
+            margin-left: 40px; /* menu toggle: 40/240 */
+        }
+        .sidebar{
+            width: 250px;
+        }
+{{else}}
+        /* om = 0 */
         .mySidebar {
             width: 50px; /* menu toggle: 50/250 */
         }
-
+        #sidebar-full {
+            transition: 0.5s;
+            margin-left: -250px;  /* menu toggle: 0/-250 */
+        }
+        #main {
+            margin-left: 240px; /* menu toggle: 40/240 */
+        }
+        .sidebar{
+            width: 50px;
+        }
+{{/if}}
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
         .openbtn {
             font-size: 20px;
             cursor: pointer;
@@ -65,11 +91,7 @@
             background-color: #444;
         }
 
-        #main {
-            transition: margin-left .5s;
-            padding: 16px;
-            margin-left: 40px; /* menu toggle: 40/240 */
-        }
+
 
         /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
         @media screen and (max-height: 450px) {
@@ -84,8 +106,10 @@
     {{/if}}
 </head>
 <body>
+    
     {{if count($_jsvars)>0}}
     <script> // JS VARS
+        var om = {{$_openmenu}};
         {{foreach from=$_jsvars item=val key=key}}
         var {{$key}} = {{$val}};
         {{/foreach}}
@@ -148,15 +172,7 @@
 
         $(document).ready(function() {
             buildMenu();
-            let om = getCookie('openmenu');
-            if(om==null) {
-                setCookie('openmenu',0,1);
-                om = 0;
-            } 
 
-            if(om==1) {
-                toggleNav();
-            }
             $("#mySidebar").show();
         })
     </script>
