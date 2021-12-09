@@ -51,7 +51,6 @@
     include PATH_MODS.$_module.".php"; 
 
     // assign vars1
-    $smarty->assign("_openmenu", isset($_COOKIE['openmenu'])?$_COOKIE['openmenu']:'0');
     $smarty->assign("_title", $_title);
     $smarty->assign("_jsvars", $_jsvars);
     $smarty->assign("_header", $_header);
