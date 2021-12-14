@@ -1,5 +1,5 @@
 <h2>Karyawan</h2>
-
+<button onclick="tableReload()">test</button>
 <table>
     <thead>
         <tr>
@@ -20,12 +20,9 @@
 <table id="dataTable" class="display">
     <thead>
         <tr>
-            <th>Nama</th>
-            <th>Jabatan</th>
-            <th>Kota</th>
-            <th>no</th>
-            <th>Tgl</th>
-            <th>harga</th>
+            <th>id</th>
+            <th>nik</th>
+            <th>nama</th>
         </tr>
     </thead>
     <tbody>
@@ -34,40 +31,25 @@
 </table>
 <hr>
 <script>
-    function getData() {
-        var data = [
-            {
-                "name":       "Tiger Nixon",
-                "position":   "System Architect",
-                "salary":     "$3,120",
-                "start_date": "2011/04/25",
-                "office":     "Edinburgh",
-                "extn":       "5421"
-            },
-            {
-                "name":       "Garrett Winters",
-                "position":   "Director",
-                "salary":     "$5,300",
-                "start_date": "2011/07/25",
-                "office":     "Edinburgh",
-                "extn":       "8422"
-            }
-        ];
-
-        $('#dataTable').DataTable({
-            data: data,
-            columns: [
-                { data: 'name' },
-                { data: 'position'},
-                { data: 'office'},
-                { data: 'extn'},
-                { data: 'start_date'},
-                { data: 'salary', className: "text-end"},
-            ]
-        });
+    function tableReload() {    
+        $("#dataTable").DataTable().ajax.reload();
     }
     $(document).ready( function () {
         // prep table        
-        
+        $('#dataTable').DataTable({
+            ajax: {
+                url: 'api.karyawan.php',
+                type: "POST",
+                dataSrc: 'data',
+                data: {
+                    token:"list"
+                }
+            },           
+            columns: [
+                { data: 'id' },
+                { data: 'nik'},
+                { data: 'nama'}
+            ]
+        });
     } );
 </script>

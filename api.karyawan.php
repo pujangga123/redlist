@@ -20,11 +20,11 @@
     }
 
     if($token=="list") {
-        $key = $_POST['key'];
+        //$key = $_POST['key'];
 
         $sql = "select id,nik,nama from karyawan limit 30";
-        $rs = $db->GetAll($sql);
-        die(json_encode($rs));
+        $rs = $db->getAll($sql);
+        die(json_encode(array("data"=>$rs)));
     }
 
     die('no matching token');
