@@ -5,3 +5,4 @@
 [submodule "libs/ADOdb"]
 	path = libs/ADOdb
 	url = https://github.com/pujangga123/ADOdb.git
+    branch = redlist
