@@ -20,7 +20,7 @@
     $_title = "REDLIST"; 
 
     //read module
-    $_module = isset($_GET['m'])?$_GET['m']:"dashboard";
+    $_module = isset($_GET['m'])?$_GET['m']:"home";
     $_module_path = PATH_MODS;
 
     // execute module
@@ -28,7 +28,6 @@
 
     // assign vars1
     $smarty->assign("_title", $_title);
-    $smarty->assign("_jsvars", $_jsvars);
     $smarty->assign("_header", $_header);
     $smarty->assign("_module", $_module);
     $smarty->assign("_module_path", $_module_path);

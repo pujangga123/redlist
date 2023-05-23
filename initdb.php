@@ -1,4 +1,5 @@
 <?php
+    require_once(PATH_LIBS."ADOdb/adodb.inc.php");
     // https://adodb.org/dokuwiki/doku.php
     $driver = 'mysqli';
  
