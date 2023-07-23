@@ -1,8 +1,0 @@
-[submodule "libs/smarty"]
-	path = libs/smarty
-	url = https://github.com/pujangga123/smarty.git
-    branch = redlist
-[submodule "libs/ADOdb"]
-	path = libs/ADOdb
-	url = https://github.com/pujangga123/ADOdb.git
-    branch = redlist

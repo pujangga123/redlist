@@ -1,11 +1,10 @@
 # redlist
 
 
-
-## Mysql
-
-### Backup
-`docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > backup.sql`
-
-### Restore
-`cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE`
+## Getting Started
+1. Create new repository using _redlist_ as template
+2. Clone `new-repository`
+3. Download _submodule_:
+   ```
+   git submodule update --init
+   ```

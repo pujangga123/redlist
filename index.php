@@ -1,6 +1,4 @@
 <?php 
-    require_once "initsession.php";
-    require_once "initcookies.php";
     require_once "config.php";
     require_once "initdb.php";  
     require_once "initsmarty.php";
