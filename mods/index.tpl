@@ -12,14 +12,14 @@
     
     </style>
     <script src="mods/index.js"></script>
-    {if file_exists("`$_module_path``$_module`.header.tpl")}
+    {if file_exists("`$_page_path``$_page`.header.tpl")}
         <!-- module script -->
-        {include file="`$_module_path``$_module`.header.tpl"}
+        {include file="`$_page_path``$_page`.header.tpl"}
     {/if}
 </head>
 <body>
     <div id="main">
-        {include file="`$_module_path``$_module`.tpl"}        
+        {include file="`$_page_path``$_page`.tpl"}        
     </div>
    
 </body>

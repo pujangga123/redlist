@@ -4,4 +4,7 @@
 {/block}
 {block name=content}
 <h1>Sample: Page Using Method 2</h2>
+
+Variabel A : {$a}
+
 {/block}
